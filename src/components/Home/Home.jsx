@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 const TrendingList = ({ movies }) => {
 

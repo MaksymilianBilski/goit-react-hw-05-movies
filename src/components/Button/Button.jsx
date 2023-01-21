@@ -1,13 +1,11 @@
-import { useState } from 'react';
-import PropTypes from 'prop-types';
-import { NavLink, Link } from 'react-router-dom';
+// import { useState } from 'react';
+// import PropTypes from 'prop-types';
+import { NavLink } from 'react-router-dom';
 
-const Button = ({ name}) => {
+const Button = ({ name }) => {
   return (
     <NavLink to={name}>
-      <button type="button">
-        {name}
-      </button>
+      <button type="button">{name}</button>
     </NavLink>
   );
 };

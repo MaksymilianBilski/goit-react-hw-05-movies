@@ -7,7 +7,7 @@ const MovieDetails = () => {
   const { movieId } = useParams();
   useEffect(() => {
     details(movieId);
-  }, []);
+  });
   console.log(movieDetails);
   return (
     <div>

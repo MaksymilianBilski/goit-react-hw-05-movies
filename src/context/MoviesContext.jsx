@@ -1,5 +1,5 @@
 import { useState, useContext, useEffect, createContext } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import fetch from 'services/fetch';
 
 const MoviesContext = createContext();
