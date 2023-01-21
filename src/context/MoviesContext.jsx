@@ -15,8 +15,13 @@ const MoviesProvider = ({ children }) => {
   };
 
   const details = async movieId => {
-    const movieDetails = await fetch('movie', movieId, '1');
-    setMovieDetails(movieDetails);
+    try {
+      const movieDetails = await fetch('movie', movieId, '1');
+      setMovieDetails(movieDetails);
+    } catch (error) {
+      console.log(error);
+      return;
+    }
   };
 
   useEffect(() => {
