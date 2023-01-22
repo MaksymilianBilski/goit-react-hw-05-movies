@@ -1,6 +1,5 @@
 import { NavLink } from 'react-router-dom';
 import { useMoviesContext } from 'context/MoviesContext';
-// import PropTypes from 'prop-types';
 
 const TrendingList = () => {
   const { fetchDetailsData, movies } = useMoviesContext();
@@ -21,6 +20,5 @@ const TrendingList = () => {
     </ul>
   );
 };
-TrendingList.propTypes = {};
 
 export default TrendingList;

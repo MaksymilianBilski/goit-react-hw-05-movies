@@ -3,7 +3,7 @@ import { useMoviesContext } from 'context/MoviesContext';
 const MovieCast = () => {
   const photo = 'https://image.tmdb.org/t/p/w500/';
   const { movieCredits } = useMoviesContext();
-  console.log(movieCredits);
+
   return movieCredits !== undefined ? (
     <div>
       {movieCredits.cast.map(actor => (

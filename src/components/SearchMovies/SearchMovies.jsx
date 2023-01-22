@@ -2,8 +2,7 @@ import { useMoviesContext } from 'context/MoviesContext';
 import { NavLink } from 'react-router-dom';
 
 const SearchMovies = () => {
-  const { onSubmit, queryData, fetchDetailsData } =
-    useMoviesContext();
+  const { onSubmit, queryData, fetchDetailsData } = useMoviesContext();
   console.log(queryData);
   return (
     <div>
@@ -17,7 +16,7 @@ const SearchMovies = () => {
           <button type="submit">confirm</button>
         </form>
       </div>
-      {queryData.length > 0 && (
+      {queryData !== undefined && queryData.length > 0 && (
         <ul>
           {queryData.map(el => (
             <li

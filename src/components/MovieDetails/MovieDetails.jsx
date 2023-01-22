@@ -2,13 +2,14 @@ import { useMoviesContext } from 'context/MoviesContext';
 import { NavLink, Outlet } from 'react-router-dom';
 
 const MovieDetails = () => {
+  const photoUrl = 'https://image.tmdb.org/t/p/w500/';
   const { movieDetails, fetchCreditsData, fetchReviewsData } =
     useMoviesContext();
   return movieDetails !== undefined ? (
     <div>
       <img
         src={
-          'https://image.tmdb.org/t/p/w500/' +
+          photoUrl +
           `${
             movieDetails.backdrop_path
               ? `${movieDetails.backdrop_path}`
