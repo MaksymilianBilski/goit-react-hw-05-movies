@@ -28,7 +28,7 @@ const fetchReviews = async (queryType, movieId) => {
     `/${queryType}/${movieId}/reviews?api_key=${KEY}`
   );
   console.log(response);
-  return response.data.results;
+  return response.data;
 };
 
 export { fetchDetails, fetchTrending, fetchCredits, fetchReviews };

@@ -8,19 +8,13 @@ import Reviews from './Reviews/Reviews';
 import NotFound from './NotFound/NotFound';
 
 export const App = () => {
-  const { movies } = useMoviesContext();
   return (
     <div>
       <Button path="movies" name="movies" />
       <Button path="/" name="home" />
       <Button path="/" name="go back" />
       <Routes>
-        <Route
-          path="/"
-          element={
-            movies !== undefined ? <TrendingList movies={movies} /> : <></>
-          }
-        ></Route>
+        <Route path="/" element={<TrendingList />}></Route>
         <Route path="/movies" />
         <Route path="/movies/:movieId" element={<MovieDetails />}>
           <Route path="cast" element={<MovieCast />}></Route>

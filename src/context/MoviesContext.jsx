@@ -1,4 +1,5 @@
 import { useState, useContext, useEffect, createContext } from 'react';
+import { useParams } from 'react-router-dom';
 // import PropTypes from 'prop-types';
 // import Notiflix from 'notiflix';
 import {
@@ -32,7 +33,7 @@ const MoviesProvider = ({ children }) => {
       const movieDetails = await fetchDetails('movie', movieId);
       setMovieDetails(movieDetails);
     } catch (error) {
-      console.log(error);
+      setMovieDetails(movies.find(el => el.id === movieId));
       return;
     }
   };
@@ -49,10 +50,9 @@ const MoviesProvider = ({ children }) => {
   const fetchReviewsData = async movieId => {
     try {
       const movieReviews = await fetchReviews('movie', movieId);
-      setMovieReviews(movieReviews);
-    } catch (error) {
-      console.log(error);
-    }
+      setMovieReviews(movieReviews.results);
+      console.log(movieReviews);
+    } catch (error) {}
   };
 
   useEffect(() => {

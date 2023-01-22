@@ -2,7 +2,7 @@ import { useMoviesContext } from 'context/MoviesContext';
 
 const Reviews = () => {
   const { movieReviews } = useMoviesContext();
-  return movieReviews !== undefined ? (
+  return movieReviews !== undefined && movieReviews.length !== 0 ? (
     <div>
       Reviews:
       {movieReviews.map(el => (
@@ -17,7 +17,7 @@ const Reviews = () => {
       ))}
     </div>
   ) : (
-    <></>
+    <div>We don't have any reviews yet</div>
   );
 };
 

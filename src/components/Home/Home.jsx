@@ -2,8 +2,8 @@ import { NavLink } from 'react-router-dom';
 import { useMoviesContext } from 'context/MoviesContext';
 // import PropTypes from 'prop-types';
 
-const TrendingList = ({ movies }) => {
-  const { fetchDetailsData } = useMoviesContext();
+const TrendingList = () => {
+  const { fetchDetailsData, movies } = useMoviesContext();
   return (
     <ul>
       {movies.map(el => (

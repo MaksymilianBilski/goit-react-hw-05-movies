@@ -27,7 +27,10 @@ const MovieDetails = () => {
         <h2>Overview</h2>
         <p>{movieDetails.overview}</p>
         <h3>Genres</h3>
-        <p>{movieDetails.genres.map(el => el.name).join(', ')}</p>
+        <p>
+          {movieDetails.genres !== undefined ??
+            movieDetails.genres.map(el => el.name).join(', ')}
+        </p>
         <div>
           <NavLink
             onClick={() => {
