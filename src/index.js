@@ -7,10 +7,10 @@ import './index.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <MoviesProvider>
-      <BrowserRouter>
+    <BrowserRouter>
+      <MoviesProvider>
         <App />
-      </BrowserRouter>
-    </MoviesProvider>
+      </MoviesProvider>
+    </BrowserRouter>
   </React.StrictMode>
 );

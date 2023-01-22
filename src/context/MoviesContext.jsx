@@ -1,22 +1,27 @@
 import { useState, useContext, useEffect, createContext } from 'react';
 // import PropTypes from 'prop-types';
-import fetch from 'services/fetch';
+// import Notiflix from 'notiflix';
+import { fetchTrending, fetchDetails } from 'services/fetch';
 
-const MoviesContext = createContext();
+export const MoviesContext = createContext();
 export const useMoviesContext = () => useContext(MoviesContext);
 
 const MoviesProvider = ({ children }) => {
   const [movies, setMovies] = useState([]);
   const [movieDetails, setMovieDetails] = useState();
 
-  const trending = async () => {
-    const movies = await fetch('trending', 'all/day', '1');
-    setMovies([...movies.data.results]);
+  const trendingData = async () => {
+    try {
+      const movies = await fetchTrending('trending', 'all/day', '1');
+      setMovies([...movies.data.results]);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
-  const details = async movieId => {
+  const detailsData = async movieId => {
     try {
-      const movieDetails = await fetch('movie', movieId, '1');
+      const movieDetails = await fetchDetails('movie', movieId);
       setMovieDetails(movieDetails);
     } catch (error) {
       console.log(error);
@@ -25,11 +30,11 @@ const MoviesProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    trending();
+    trendingData();
   }, []);
   return (
     <MoviesContext.Provider
-      value={{ useMoviesContext, details, movieDetails, movies }}
+      value={{ useMoviesContext, detailsData, movieDetails, movies }}
     >
       {children}
     </MoviesContext.Provider>

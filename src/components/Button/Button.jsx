@@ -2,9 +2,9 @@
 // import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 
-const Button = ({ name }) => {
+const Button = ({ path, name }) => {
   return (
-    <NavLink to={name}>
+    <NavLink to={path}>
       <button type="button">{name}</button>
     </NavLink>
   );

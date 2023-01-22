@@ -1,26 +1,31 @@
-import { useParams } from 'react-router-dom';
 import { useMoviesContext } from 'context/MoviesContext';
-import { useEffect } from 'react';
 
 const MovieDetails = () => {
-  const { details, movieDetails } = useMoviesContext();
-  const { movieId } = useParams();
-  useEffect(() => {
-    details(movieId);
-  });
+  const { movieDetails } = useMoviesContext();
   console.log(movieDetails);
-  return (
+  return movieDetails !== undefined ? (
     <div>
       <img
         src={
-          movieDetails !== undefined
-            ? 'https://image.tmdb.org/t/p/w500/' +
-              movieDetails.data.backdrop_path
-            : ''
+          'https://image.tmdb.org/t/p/w500/' + movieDetails.data.backdrop_path
         }
-        alt={movieDetails !== undefined ? movieDetails.data.tags : ''}
+        alt={movieDetails.data.tags}
       ></img>
+      <div>
+        <h1>
+          {movieDetails.data.original_title
+            ? `${movieDetails.data.original_title}`
+            : `${movieDetails.data.name}`}
+        </h1>
+        <p>User Score: {movieDetails.data.vote_average}%</p>
+        <h2>Overview</h2>
+        <p>{movieDetails.data.overview}</p>
+        <h3>Genres</h3>
+        <p>{movieDetails.data.genres.map(el => el.name).join(', ')}</p>
+      </div>
     </div>
+  ) : (
+    <div></div>
   );
 };
 
