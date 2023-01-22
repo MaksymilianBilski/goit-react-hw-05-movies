@@ -3,7 +3,6 @@ import { NavLink } from 'react-router-dom';
 
 const SearchMovies = () => {
   const { onSubmit, queryData, fetchDetailsData } = useMoviesContext();
-  console.log(queryData);
   return (
     <div>
       <div>

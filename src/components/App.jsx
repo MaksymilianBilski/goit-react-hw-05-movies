@@ -10,7 +10,7 @@ import SearchMovies from './SearchMovies/SearchMovies';
 export const App = () => {
   return (
     <div>
-      <Button path="movies" name="movies" />
+      <Button path="/movies" name="movies" />
       <Button path="/goit-react-hw-05-movies" name="home" />
       <Button path="/goit-react-hw-05-movies" name="go back" />
       <Routes>

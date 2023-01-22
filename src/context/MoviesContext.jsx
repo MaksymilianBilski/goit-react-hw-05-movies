@@ -1,6 +1,5 @@
 import { useState, useContext, useEffect, createContext } from 'react';
-// import PropTypes from 'prop-types';
-// import Notiflix from 'notiflix';
+import PropTypes from 'prop-types';
 import {
   fetchTrending,
   fetchDetails,
@@ -59,7 +58,6 @@ const MoviesProvider = ({ children }) => {
     try {
       const movieReviews = await fetchReviews('movie', movieId);
       setMovieReviews(movieReviews.results);
-      console.log(movieReviews);
     } catch (error) {}
   };
 
@@ -94,6 +92,53 @@ const MoviesProvider = ({ children }) => {
       {children}
     </MoviesContext.Provider>
   );
+};
+
+MoviesProvider.propTypes = {
+  useMoviesContext: PropTypes.func,
+  fetchDetailsData: PropTypes.func,
+  fetchCreditsData: PropTypes.func,
+  fetchReviewsData: PropTypes.func,
+  fetchQueryData: PropTypes.func,
+  onSubmit: PropTypes.func,
+  movies: PropTypes.arrayOf(
+    PropTypes.objectOf({
+      id: PropTypes.number,
+      original_title: PropTypes.string,
+      name: PropTypes.string,
+    })
+  ),
+  movieDetails: PropTypes.arrayOf(
+    PropTypes.objectOf({
+      backdrop_path: PropTypes.string,
+      poste_path: PropTypes.string,
+      original_title: PropTypes.string,
+      name: PropTypes.string,
+      vote_average: PropTypes.number,
+      genres: PropTypes.arrayOf(PropTypes.objectOf({ name: PropTypes.string })),
+    })
+  ),
+  movieCredits: PropTypes.arrayOf(
+    PropTypes.objectOf({
+      profile_path: PropTypes.string,
+      original_name: PropTypes.string,
+      character: PropTypes.string,
+    })
+  ),
+  movieReviews: PropTypes.arrayOf(
+    PropTypes.objectOf({
+      author: PropTypes.string,
+      content: PropTypes.string,
+    })
+  ),
+  queryData: PropTypes.arrayOf(
+    PropTypes.objectOf({
+      id: PropTypes.number,
+      original_title: PropTypes.string,
+      name: PropTypes.string,
+    })
+  ),
+  inputValue: PropTypes.string,
 };
 
 export default MoviesProvider;
