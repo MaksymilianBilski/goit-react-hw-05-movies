@@ -1,27 +1,52 @@
 import { useMoviesContext } from 'context/MoviesContext';
+import { NavLink, Outlet, Route, Routes } from 'react-router-dom';
 
 const MovieDetails = () => {
-  const { movieDetails } = useMoviesContext();
-  console.log(movieDetails);
+  const { movieDetails, fetchCreditsData, fetchReviewsData } =
+    useMoviesContext();
   return movieDetails !== undefined ? (
     <div>
       <img
         src={
-          'https://image.tmdb.org/t/p/w500/' + movieDetails.data.backdrop_path
+          'https://image.tmdb.org/t/p/w500/' +
+          `${
+            movieDetails.backdrop_path === null
+              ? movieDetails.backdrop_path
+              : movieDetails.poster_path
+          }`
         }
-        alt={movieDetails.data.tags}
+        alt={movieDetails.tags}
       ></img>
       <div>
         <h1>
-          {movieDetails.data.original_title
-            ? `${movieDetails.data.original_title}`
-            : `${movieDetails.data.name}`}
+          {movieDetails.original_title
+            ? `${movieDetails.original_title}`
+            : `${movieDetails.name}`}
         </h1>
-        <p>User Score: {movieDetails.data.vote_average}%</p>
+        <p>User Score: {movieDetails.vote_average}%</p>
         <h2>Overview</h2>
-        <p>{movieDetails.data.overview}</p>
+        <p>{movieDetails.overview}</p>
         <h3>Genres</h3>
-        <p>{movieDetails.data.genres.map(el => el.name).join(', ')}</p>
+        <p>{movieDetails.genres.map(el => el.name).join(', ')}</p>
+        <div>
+          <NavLink
+            onClick={() => {
+              fetchCreditsData(movieDetails.id);
+            }}
+            to="cast"
+          >
+            cast
+          </NavLink>
+          <NavLink
+            onClick={() => {
+              fetchReviewsData(movieDetails.id);
+            }}
+            to="reviews"
+          >
+            reviews
+          </NavLink>
+        </div>
+        <Outlet />
       </div>
     </div>
   ) : (
