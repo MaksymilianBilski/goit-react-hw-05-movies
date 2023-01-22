@@ -23,7 +23,6 @@ const MoviesProvider = ({ children }) => {
       setMovies(movies);
       console.log(movies);
     } catch (error) {
-      console.log(error);
       return;
     }
   };
@@ -33,6 +32,7 @@ const MoviesProvider = ({ children }) => {
       const movieDetails = await fetchDetails('movie', movieId);
       setMovieDetails(movieDetails);
     } catch (error) {
+      console.log(error);
       return;
     }
   };
