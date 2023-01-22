@@ -31,4 +31,18 @@ const fetchReviews = async (queryType, movieId) => {
   return response.data;
 };
 
-export { fetchDetails, fetchTrending, fetchCredits, fetchReviews };
+const fetchByQuery = async (query, page) => {
+  const response = await axios.get(
+    `/search/movie/?api_key=${KEY}&query=${query}&page=${page}`
+  );
+  console.log(response.data.results);
+  return response.data.results;
+};
+
+export {
+  fetchDetails,
+  fetchTrending,
+  fetchCredits,
+  fetchReviews,
+  fetchByQuery,
+};

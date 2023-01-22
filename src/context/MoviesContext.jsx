@@ -1,4 +1,5 @@
 import { useState, useContext, useEffect, createContext } from 'react';
+import { NavLink } from 'react-router-dom';
 // import PropTypes from 'prop-types';
 // import Notiflix from 'notiflix';
 import {
@@ -6,6 +7,7 @@ import {
   fetchDetails,
   fetchCredits,
   fetchReviews,
+  fetchByQuery,
 } from 'services/fetch';
 
 export const MoviesContext = createContext();
@@ -16,12 +18,20 @@ const MoviesProvider = ({ children }) => {
   const [movieDetails, setMovieDetails] = useState();
   const [movieCredits, setMovieCredits] = useState();
   const [movieReviews, setMovieReviews] = useState();
+  const [queryData, setQueryData] = useState();
+  const [inputValue, setInputValue] = useState();
+
+  const onSubmit = evt => {
+    evt.preventDefault();
+    const input = evt.target.search.value;
+    setInputValue(input);
+    fetchQueryData(input, 1);
+  };
 
   const fetchTrendingData = async () => {
     try {
       const movies = await fetchTrending('trending', 'all/day', '1');
       setMovies(movies);
-      console.log(movies);
     } catch (error) {
       return;
     }
@@ -54,6 +64,13 @@ const MoviesProvider = ({ children }) => {
     } catch (error) {}
   };
 
+  const fetchQueryData = async (query, page) => {
+    try {
+      const queryData = await fetchByQuery(query, page);
+      setQueryData(queryData);
+    } catch (error) {}
+  };
+
   useEffect(() => {
     fetchTrendingData();
   }, []);
@@ -65,10 +82,14 @@ const MoviesProvider = ({ children }) => {
         fetchDetailsData,
         fetchCreditsData,
         fetchReviewsData,
+        fetchQueryData,
+        onSubmit,
         movies,
         movieDetails,
         movieCredits,
         movieReviews,
+        queryData,
+        inputValue,
       }}
     >
       {children}
