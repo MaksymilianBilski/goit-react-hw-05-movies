@@ -1,4 +1,3 @@
-import { useMoviesContext } from 'context/MoviesContext';
 import { Routes, Route } from 'react-router-dom';
 import MovieDetails from './MovieDetails/MovieDetails';
 import Button from './Button/Button';

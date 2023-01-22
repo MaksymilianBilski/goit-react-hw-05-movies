@@ -1,5 +1,4 @@
 import { useState, useContext, useEffect, createContext } from 'react';
-import { useParams } from 'react-router-dom';
 // import PropTypes from 'prop-types';
 // import Notiflix from 'notiflix';
 import {
