@@ -1,3 +1,16 @@
+.detailsImg {
+    width: 300px;
+    height: 400px;
+}
+
+.movieWrapper {
+    display: flex;
+}
+
+.movieDescription {
+    margin-left: 10px;
+}
+
 .navlink {
     color: yellowgreen;
     text-decoration: none;
@@ -17,6 +30,7 @@
 }
 
 .navigation {
-    margin-left: 5px;
+    margin: 10px 50px;
     display: flex;
+    height: 20px;
 }

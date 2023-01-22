@@ -1,0 +1,21 @@
+.list {
+    margin: 0 auto;
+    width: 400px;
+    list-style: decimal;
+    box-shadow: 0px 30px 40px 20px darkred;
+    border: 2px solid darkred
+}
+
+.listItem {
+    color: rgb(230, 71, 71);
+}
+
+.navlink {
+    color: rgb(63, 7, 7);
+}
+
+.searchForm {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}

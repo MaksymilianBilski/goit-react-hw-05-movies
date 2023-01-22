@@ -1,5 +1,6 @@
 import { useMoviesContext } from 'context/MoviesContext';
 import { NavLink } from 'react-router-dom';
+import css from './Movies.module.css';
 
 const SearchMovies = () => {
   const { onSubmit, queryData, fetchDetailsData } = useMoviesContext();
@@ -7,6 +8,7 @@ const SearchMovies = () => {
     <div>
       <div>
         <form
+          className={css.searchForm}
           onSubmit={e => {
             onSubmit(e);
           }}
@@ -16,15 +18,16 @@ const SearchMovies = () => {
         </form>
       </div>
       {queryData !== undefined && queryData.length > 0 && (
-        <ul>
+        <ul className={css.list}>
           {queryData.map(el => (
             <li
+              className={css.listItem}
               key={el.id}
               onClick={() => {
                 fetchDetailsData(el.id);
               }}
             >
-              <NavLink to={`/movies/:${el.id}`}>
+              <NavLink className={css.navlink} to={`/movies/:${el.id}`}>
                 {el.name !== undefined ? el.name : el.original_title}
               </NavLink>
             </li>

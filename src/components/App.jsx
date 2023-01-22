@@ -5,14 +5,13 @@ import TrendingList from './Home/Home';
 import MovieCast from './MovieCast/MovieCast';
 import Reviews from './Reviews/Reviews';
 import NotFound from './NotFound/NotFound';
-import SearchMovies from './SearchMovies/SearchMovies';
+import SearchMovies from './SearchMovies/Movies';
 
 export const App = () => {
   return (
     <div>
-      <Button path="/movies" name="movies" />
       <Button path="/goit-react-hw-05-movies" name="home" />
-      <Button path="/goit-react-hw-05-movies" name="go back" />
+      <Button path="/movies" name="movies" />
       <Routes>
         <Route
           path="/goit-react-hw-05-movies"
