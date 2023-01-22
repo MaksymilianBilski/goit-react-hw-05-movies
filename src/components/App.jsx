@@ -6,7 +6,6 @@ import MovieCast from './MovieCast/MovieCast';
 import Reviews from './Reviews/Reviews';
 import NotFound from './NotFound/NotFound';
 import SearchMovies from './SearchMovies/SearchMovies';
-import MovieList from './SearchMovies/MoviesList';
 
 export const App = () => {
   return (
