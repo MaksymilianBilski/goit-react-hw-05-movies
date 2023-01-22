@@ -1,5 +1,5 @@
 import { useMoviesContext } from 'context/MoviesContext';
-import { NavLink, Outlet, Route, Routes } from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
 
 const MovieDetails = () => {
   const { movieDetails, fetchCreditsData, fetchReviewsData } =
@@ -10,9 +10,9 @@ const MovieDetails = () => {
         src={
           'https://image.tmdb.org/t/p/w500/' +
           `${
-            movieDetails.backdrop_path === null
-              ? movieDetails.backdrop_path
-              : movieDetails.poster_path
+            movieDetails.backdrop_path
+              ? `${movieDetails.backdrop_path}`
+              : `${movieDetails.poster_path}`
           }`
         }
         alt={movieDetails.tags}

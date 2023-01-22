@@ -6,6 +6,7 @@ const fetchTrending = async (queryType, query, page) => {
   const response = await axios.get(
     `/${queryType}/${query}?api_key=${KEY}&page=${page}`
   );
+  console.log(response.data.results);
   return response.data.results;
 };
 

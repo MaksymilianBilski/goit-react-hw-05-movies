@@ -20,10 +20,11 @@ const MoviesProvider = ({ children }) => {
   const fetchTrendingData = async () => {
     try {
       const movies = await fetchTrending('trending', 'all/day', '1');
-      setMovies([...movies]);
+      setMovies(movies);
       console.log(movies);
     } catch (error) {
       console.log(error);
+      return;
     }
   };
 
