@@ -1,4 +1,5 @@
 import { useMoviesContext } from 'context/MoviesContext';
+import css from './Reviews.module.css';
 
 const Reviews = () => {
   const { movieReviews } = useMoviesContext();
@@ -6,12 +7,12 @@ const Reviews = () => {
     <div>
       Reviews:
       {movieReviews.map(el => (
-        <ul>
+        <ul className={css.list}>
           <li>
             <h3>
               AUTHOR: <span>{el.author}</span>
             </h3>
-            <p>{el.content}</p>
+            <p className={css.text}>{el.content}</p>
           </li>
         </ul>
       ))}

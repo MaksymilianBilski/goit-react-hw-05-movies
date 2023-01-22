@@ -1,5 +1,6 @@
 import { useMoviesContext } from 'context/MoviesContext';
 import { NavLink, Outlet } from 'react-router-dom';
+import css from './MovieDetails.module.css';
 
 const MovieDetails = () => {
   const photoUrl = 'https://image.tmdb.org/t/p/w500/';
@@ -32,8 +33,9 @@ const MovieDetails = () => {
           {movieDetails.genres !== undefined ??
             movieDetails.genres.map(el => el.name).join(', ')}
         </p>
-        <div>
+        <div className={css.navigation}>
           <NavLink
+            className={css.navlink}
             onClick={() => {
               fetchCreditsData(movieDetails.id);
             }}
@@ -42,6 +44,7 @@ const MovieDetails = () => {
             cast
           </NavLink>
           <NavLink
+            className={css.navlink}
             onClick={() => {
               fetchReviewsData(movieDetails.id);
             }}

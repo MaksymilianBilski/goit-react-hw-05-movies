@@ -1,0 +1,22 @@
+.navlink {
+    color: yellowgreen;
+    text-decoration: none;
+    width: 70px;
+    text-align: center;
+    border: 2px solid rgb(2, 70, 38);
+
+}
+
+.navlink:hover {
+    background-color: azure;
+    box-shadow: 0px 0px 20px 5px cornflowerblue;
+}
+
+.navlink:first-child {
+    margin-right: 10px;
+}
+
+.navigation {
+    margin-left: 5px;
+    display: flex;
+}
