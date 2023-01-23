@@ -92,9 +92,10 @@ const App = () => {
           marginTop: '5px',
         }}
       >
-        {location.pathname !== '/goit-react-hw-05-movies' && (
-          <Button path={previousLocation} name="go back" />
-        )}
+        {location.pathname !== '/goit-react-hw-05-movies' &&
+          location.pathname !== '/goit-react-hw-05-movies/' && (
+            <Button path={previousLocation} name="go back" />
+          )}
         <Button path="/goit-react-hw-05-movies" name="home" />
         <Button path="/movies" name="movies" />
       </div>
