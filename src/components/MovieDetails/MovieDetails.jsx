@@ -5,22 +5,17 @@ import Button from 'components/Button/Button';
 
 const MovieDetails = () => {
   const photoUrl = 'https://image.tmdb.org/t/p/w500/';
-  const { movieDetails, fetchCreditsData, fetchReviewsData } =
+  const { movieDetails, fetchCreditsData, fetchReviewsData, previousLocation } =
     useMoviesContext();
+  console.log(previousLocation);
+
   return movieDetails !== undefined ? (
     <div className={css.detailsWrapper}>
-      <Button path="/goit-react-hw-05-movies" name="go back" />
+      <Button path={previousLocation} name="go back" />
       <div className={css.movieWrapper}>
         <img
           className={css.detailsImg}
-          src={
-            photoUrl +
-            `${
-              movieDetails.backdrop_path
-                ? `${movieDetails.backdrop_path}`
-                : `${movieDetails.poster_path}`
-            }`
-          }
+          src={photoUrl + `${`${movieDetails.poster_path}`}`}
           alt={movieDetails.tags}
         ></img>
         <div className={css.movieDescription}>

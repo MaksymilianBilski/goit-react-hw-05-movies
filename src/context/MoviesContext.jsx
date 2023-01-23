@@ -1,5 +1,6 @@
 import { useState, useContext, useEffect, createContext } from 'react';
 import PropTypes from 'prop-types';
+import { useSearchParams, useLocation } from 'react-router-dom';
 import {
   fetchTrending,
   fetchDetails,
@@ -18,12 +19,18 @@ const MoviesProvider = ({ children }) => {
   const [movieReviews, setMovieReviews] = useState();
   const [queryData, setQueryData] = useState();
   const [inputValue, setInputValue] = useState();
+  const [previousLocation, setPreviousLocation] = useState();
+
+  const [searchParams, setSearchParams] = useSearchParams();
+  const location = useLocation();
 
   const onSubmit = evt => {
     evt.preventDefault();
     const input = evt.target.search.value;
+    setSearchParams('query=' + input);
     setInputValue(input);
     fetchQueryData(input, 1);
+    setPreviousLocation(location);
   };
 
   const fetchTrendingData = async () => {
@@ -87,6 +94,8 @@ const MoviesProvider = ({ children }) => {
         movieReviews,
         queryData,
         inputValue,
+        searchParams,
+        previousLocation,
       }}
     >
       {children}
