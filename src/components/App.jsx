@@ -47,6 +47,7 @@ const App = () => {
     try {
       const movieDetails = await fetchDetails('movie', movieId);
       setMovieDetails(movieDetails);
+      setPreviousLocation(location);
     } catch (error) {
       setMovieDetails(movies.find(el => el.id === movieId));
       return;
