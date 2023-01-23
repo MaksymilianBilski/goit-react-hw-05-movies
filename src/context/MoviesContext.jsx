@@ -37,6 +37,8 @@ const MoviesProvider = ({ children }) => {
     try {
       const movies = await fetchTrending('trending', 'all/day', '1');
       setMovies(movies);
+      console.log(location);
+      setPreviousLocation(location);
     } catch (error) {
       return;
     }
