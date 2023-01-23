@@ -14,7 +14,7 @@ const TrendingList = () => {
             fetchDetailsData(el.id);
           }}
         >
-          <NavLink className={css.navLink} to={`/movies/:${el.id}`}>
+          <NavLink className={css.navLink} to={`/movies/${el.id}`}>
             {el.name !== undefined ? el.name : el.original_title}
           </NavLink>
         </li>

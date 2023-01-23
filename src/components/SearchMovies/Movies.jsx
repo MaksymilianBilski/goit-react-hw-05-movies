@@ -7,12 +7,7 @@ const SearchMovies = () => {
   return (
     <div>
       <div>
-        <form
-          className={css.searchForm}
-          onSubmit={e => {
-            onSubmit(e);
-          }}
-        >
+        <form className={css.searchForm} onSubmit={onSubmit}>
           <input name="search" placeholder="type movie name"></input>
           <button type="submit">confirm</button>
         </form>

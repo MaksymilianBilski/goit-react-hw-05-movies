@@ -8,8 +8,14 @@
 
 .listItem {
     color: rgb(230, 71, 71);
+
 }
 
 .navLink {
     color: rgb(63, 7, 7);
+    text-decoration: none;
+}
+
+.navLink:hover {
+    color: rgb(230, 71, 71);
 }

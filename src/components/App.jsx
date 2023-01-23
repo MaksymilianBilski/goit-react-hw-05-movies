@@ -4,7 +4,6 @@ import Button from './Button/Button';
 import TrendingList from './Home/Home';
 import MovieCast from './MovieCast/MovieCast';
 import Reviews from './Reviews/Reviews';
-import NotFound from './NotFound/NotFound';
 import SearchMovies from './SearchMovies/Movies';
 
 export const App = () => {
@@ -23,7 +22,7 @@ export const App = () => {
           <Route path="reviews" element={<Reviews />}></Route>
         </Route>
 
-        <Route path="*" element={<NotFound />}></Route>
+        <Route path="*" element={<TrendingList />}></Route>
       </Routes>
     </div>
   );
