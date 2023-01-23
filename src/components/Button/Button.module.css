@@ -1,11 +1,12 @@
 .button {
-    color: darkorange;
+    color: rgb(120, 11, 221);
     font-weight: 600;
-    border: 2px solid green;
+    border: 1px solid rgb(128, 0, 100);
     margin-left: 3px;
     cursor: pointer;
 }
 
 .button:hover {
-    background-color: bisque;
+    background-color: rgb(99, 12, 94);
+    color: white;
 }

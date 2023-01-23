@@ -1,16 +1,11 @@
-import { useMoviesContext } from 'context/MoviesContext';
 import { NavLink, Outlet } from 'react-router-dom';
 import css from './MovieDetails.module.css';
-import Button from 'components/Button/Button';
 
 const photoUrl = 'https://image.tmdb.org/t/p/w500/';
 
-const MovieDetails = () => {
-  const { movieDetails, fetchCreditsData, fetchReviewsData, previousLocation } =
-    useMoviesContext();
+const MovieDetails = ({ movieDetails, fetchCreditsData, fetchReviewsData }) => {
   return movieDetails !== undefined ? (
     <div className={css.detailsWrapper}>
-      <Button path={previousLocation} name="go back" />
       <div className={css.movieWrapper}>
         <img
           className={css.detailsImg}

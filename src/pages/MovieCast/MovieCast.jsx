@@ -1,11 +1,8 @@
-import { useMoviesContext } from 'context/MoviesContext';
 import css from './MovieCast.module.css';
 
 const photo = 'https://image.tmdb.org/t/p/w500/';
 
-const MovieCast = () => {
-  const { movieCredits } = useMoviesContext();
-
+const MovieCast = ({movieCredits}) => {
   return (
     movieCredits !== undefined && (
       <div className={css.castWrapper}>

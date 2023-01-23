@@ -1,8 +1,6 @@
-import { useMoviesContext } from 'context/MoviesContext';
 import css from './Reviews.module.css';
 
-const Reviews = () => {
-  const { movieReviews } = useMoviesContext();
+const Reviews = ({ movieReviews }) => {
   return movieReviews !== undefined && movieReviews.length !== 0 ? (
     <div>
       Reviews:

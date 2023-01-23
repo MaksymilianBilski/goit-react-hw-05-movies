@@ -1,15 +1,19 @@
-import { useMoviesContext } from 'context/MoviesContext';
 import { NavLink } from 'react-router-dom';
 import css from './Movies.module.css';
 
-const SearchMovies = () => {
-  const { onSubmit, queryData, fetchDetailsData } = useMoviesContext();
+const SearchMovies = ({ handleSubmit, queryData, fetchDetailsData }) => {
   return (
     <div>
       <div>
-        <form className={css.searchForm} onSubmit={onSubmit}>
-          <input name="search" placeholder="type movie name"></input>
-          <button type="submit">confirm</button>
+        <form className={css.searchForm} onSubmit={handleSubmit}>
+          <input
+            className={css.input}
+            name="search"
+            placeholder="type movie name"
+          ></input>
+          <button className={css.button} type="submit">
+            confirm
+          </button>
         </form>
       </div>
       {queryData !== undefined && queryData.length > 0 && (

@@ -1,9 +1,8 @@
 import { NavLink } from 'react-router-dom';
-import { useMoviesContext } from 'context/MoviesContext';
 import css from './Home.module.css';
 
-const TrendingList = () => {
-  const { fetchDetailsData, movies } = useMoviesContext();
+const TrendingList = ({ movies, fetchDetailsData }) => {
+  // const { fetchDetailsData, movies } = useMoviesContext();
   return (
     <ul className={css.list}>
       {movies.map(el => (

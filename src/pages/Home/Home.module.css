@@ -3,7 +3,8 @@
     width: 400px;
     list-style: decimal;
     box-shadow: 0px 30px 40px 20px darkred;
-    border: 2px solid darkred
+    border: 2px solid darkred;
+    background-color: rgb(88, 16, 16);
 }
 
 .listItem {
@@ -12,7 +13,7 @@
 }
 
 .navLink {
-    color: rgb(63, 7, 7);
+    color: white;
     text-decoration: none;
 }
 
