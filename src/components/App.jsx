@@ -1,5 +1,4 @@
 import { Routes, Route } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import MovieDetails from 'pages/MovieDetails/MovieDetails';
 import Button from './Button/Button';
 import TrendingList from 'pages/Home/Home';
@@ -39,6 +38,5 @@ const App = () => {
     </div>
   );
 };
-
 
 export default App;
