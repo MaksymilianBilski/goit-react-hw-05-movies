@@ -1,7 +1,7 @@
 import { NavLink, useSearchParams, useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-import { fetchByQuery } from 'services/fetch';
+import { fetchByQuery } from 'services/api';
 import css from './Movies.module.css';
 
 const SearchMovies = ({ fetchDetailsData }) => {
@@ -9,7 +9,7 @@ const SearchMovies = ({ fetchDetailsData }) => {
 
   const [searchParams, setSearchParams] = useSearchParams();
   const [queryData, setQueryData] = useState();
-  
+
   const fetchQueryData = async (query, page) => {
     try {
       const queryData = await fetchByQuery(query, page);

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { fetchReviews } from 'services/fetch';
+import { fetchReviews } from 'services/api';
 import css from './Reviews.module.css';
 
 const Reviews = () => {

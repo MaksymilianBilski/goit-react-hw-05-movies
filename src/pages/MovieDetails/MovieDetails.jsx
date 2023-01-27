@@ -1,4 +1,5 @@
 import { NavLink, Outlet, useLocation } from 'react-router-dom';
+import { useRef } from 'react';
 import Button from 'components/Button/Button';
 import css from './MovieDetails.module.css';
 
@@ -6,11 +7,12 @@ const photoUrl = 'https://image.tmdb.org/t/p/w500/';
 
 const MovieDetails = ({ movieDetails }) => {
   const location = useLocation();
+  const backLink = useRef(location.state.from ?? '/');
 
   return movieDetails !== undefined ? (
     <div className={css.detailsWrapper}>
       <div className={css.movieWrapper}>
-        <Button name="back" path={location.state.from}></Button>
+        <Button name="back" path={backLink.current}></Button>
         <img
           className={css.detailsImg}
           src={photoUrl + `${`${movieDetails.poster_path}`}`}
@@ -33,14 +35,10 @@ const MovieDetails = ({ movieDetails }) => {
         </div>
       </div>
       <div className={css.navigation}>
-        <NavLink state={location.state.from} className={css.navlink} to="cast">
+        <NavLink state={{ backLink }} className={css.navlink} to="cast">
           cast
         </NavLink>
-        <NavLink
-          state={location.state.from}
-          className={css.navlink}
-          to="reviews"
-        >
+        <NavLink state={{ backLink }} className={css.navlink} to="reviews">
           reviews
         </NavLink>
       </div>

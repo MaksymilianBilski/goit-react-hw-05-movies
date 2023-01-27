@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { fetchTrending, fetchDetails } from 'services/fetch';
+import { fetchTrending, fetchDetails } from 'services/api';
 import MovieDetails from 'pages/MovieDetails/MovieDetails';
 import Button from './Button/Button';
 import TrendingList from 'pages/Home/Home';
@@ -69,7 +69,6 @@ const App = () => {
           <Route path="cast" element={<MovieCast />}></Route>
           <Route path="reviews" element={<Reviews />}></Route>
         </Route>
-
         <Route
           path="*"
           element={

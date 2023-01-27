@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import PropTypes from 'prop-types'
-import { fetchCredits } from 'services/fetch';
+import PropTypes from 'prop-types';
+import { fetchCredits } from 'services/api';
 import css from './MovieCast.module.css';
 
 const photo = 'https://image.tmdb.org/t/p/w500/';
@@ -18,7 +18,7 @@ const MovieCast = () => {
       return;
     }
   };
-  
+
   useEffect(() => {
     fetchCreditsData(movieId);
   }, [movieId]);
