@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { fetchByQuery } from 'services/api';
 import css from './Movies.module.css';
 
-const SearchMovies = ({ fetchDetailsData }) => {
+const SearchMovies = () => {
   const location = useLocation();
 
   const [searchParams, setSearchParams] = useSearchParams();
@@ -41,13 +41,7 @@ const SearchMovies = ({ fetchDetailsData }) => {
       {queryData !== undefined && queryData.length > 0 && (
         <ul className={css.list}>
           {queryData.map(el => (
-            <li
-              className={css.listItem}
-              key={el.id}
-              onClick={() => {
-                fetchDetailsData(el.id);
-              }}
-            >
+            <li className={css.listItem} key={el.id}>
               <NavLink
                 state={{ from: location.pathname + '&' + searchParams }}
                 className={css.navlink}
