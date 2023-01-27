@@ -1,12 +1,16 @@
-import { NavLink, Outlet } from 'react-router-dom';
+import { NavLink, Outlet, useLocation } from 'react-router-dom';
+import Button from 'components/Button/Button';
 import css from './MovieDetails.module.css';
 
 const photoUrl = 'https://image.tmdb.org/t/p/w500/';
 
-const MovieDetails = ({ movieDetails, fetchCreditsData, fetchReviewsData }) => {
+const MovieDetails = ({ movieDetails }) => {
+  const location = useLocation();
+
   return movieDetails !== undefined ? (
     <div className={css.detailsWrapper}>
       <div className={css.movieWrapper}>
+        <Button name="back" path={location.state.from}></Button>
         <img
           className={css.detailsImg}
           src={photoUrl + `${`${movieDetails.poster_path}`}`}
@@ -29,20 +33,12 @@ const MovieDetails = ({ movieDetails, fetchCreditsData, fetchReviewsData }) => {
         </div>
       </div>
       <div className={css.navigation}>
-        <NavLink
-          className={css.navlink}
-          onClick={() => {
-            fetchCreditsData(movieDetails.id);
-          }}
-          to="cast"
-        >
+        <NavLink state={location.state.from} className={css.navlink} to="cast">
           cast
         </NavLink>
         <NavLink
+          state={location.state.from}
           className={css.navlink}
-          onClick={() => {
-            fetchReviewsData(movieDetails.id);
-          }}
           to="reviews"
         >
           reviews

@@ -1,11 +1,33 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useSearchParams, useLocation } from 'react-router-dom';
+import { useState } from 'react';
+import PropTypes from 'prop-types';
+import { fetchByQuery } from 'services/fetch';
 import css from './Movies.module.css';
 
-const SearchMovies = ({ handleSubmit, queryData, fetchDetailsData }) => {
+const SearchMovies = ({ fetchDetailsData }) => {
+  const location = useLocation();
+
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [queryData, setQueryData] = useState();
+  
+  const fetchQueryData = async (query, page) => {
+    try {
+      const queryData = await fetchByQuery(query, page);
+      setQueryData(queryData);
+    } catch (error) {}
+  };
+
+  const onSubmit = evt => {
+    evt.preventDefault();
+    const input = evt.target.search.value;
+    setSearchParams('query=' + input);
+    fetchQueryData(input, 1);
+  };
+
   return (
     <div>
       <div>
-        <form className={css.searchForm} onSubmit={handleSubmit}>
+        <form className={css.searchForm} onSubmit={onSubmit}>
           <input
             className={css.input}
             name="search"
@@ -26,7 +48,11 @@ const SearchMovies = ({ handleSubmit, queryData, fetchDetailsData }) => {
                 fetchDetailsData(el.id);
               }}
             >
-              <NavLink className={css.navlink} to={`/movies/:${el.id}`}>
+              <NavLink
+                state={{ from: location.pathname + '&' + searchParams }}
+                className={css.navlink}
+                to={`/movies/${el.id}`}
+              >
                 {el.name !== undefined ? el.name : el.original_title}
               </NavLink>
             </li>
@@ -35,6 +61,19 @@ const SearchMovies = ({ handleSubmit, queryData, fetchDetailsData }) => {
       )}
     </div>
   );
+};
+
+SearchMovies.propTypes = {
+  queryData: PropTypes.arrayOf(
+    PropTypes.objectOf({
+      id: PropTypes.number,
+      original_title: PropTypes.string,
+      name: PropTypes.string,
+    })
+  ),
+  inputValue: PropTypes.string,
+  fetchQueryData: PropTypes.func,
+  onSubmit: PropTypes.func,
 };
 
 export default SearchMovies;

@@ -1,8 +1,8 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import css from './Home.module.css';
 
 const TrendingList = ({ movies, fetchDetailsData }) => {
-  // const { fetchDetailsData, movies } = useMoviesContext();
+  const location = useLocation();
   return (
     <ul className={css.list}>
       {movies.map(el => (
@@ -13,7 +13,11 @@ const TrendingList = ({ movies, fetchDetailsData }) => {
             fetchDetailsData(el.id);
           }}
         >
-          <NavLink className={css.navLink} to={`/movies/${el.id}`}>
+          <NavLink
+            state={{ from: location.pathname }}
+            className={css.navLink}
+            to={`/movies/${el.id}`}
+          >
             {el.name !== undefined ? el.name : el.original_title}
           </NavLink>
         </li>
