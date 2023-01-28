@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import css from './Button.module.css';
 
 const Button = ({ path, name }) => {
@@ -9,6 +10,11 @@ const Button = ({ path, name }) => {
       </button>
     </NavLink>
   );
+};
+
+Button.propTypes = {
+  path: PropTypes.string,
+  name: PropTypes.string,
 };
 
 export default Button;

@@ -1,6 +1,6 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import MovieDetails from 'pages/MovieDetails/MovieDetails';
-import Button from './Button/Button';
+import Button from './components/Button/Button';
 import TrendingList from 'pages/Home/Home';
 import MovieCast from 'pages/MovieCast/MovieCast';
 import Reviews from 'pages/Reviews/Reviews';
@@ -33,7 +33,10 @@ const App = () => {
           <Route path="reviews" element={<Reviews />}></Route>
         </Route>
 
-        <Route path="*" element={<TrendingList />}></Route>
+        <Route
+          path="*"
+          element={<Navigate to="/goit-react-hw-05-movies" />}
+        ></Route>
       </Routes>
     </div>
   );

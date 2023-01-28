@@ -27,43 +27,43 @@ const MovieDetails = () => {
   const location = useLocation();
   const backLink = useRef(location.state.from ?? '/');
 
-  return movieDetails !== undefined ? (
-    <div className={css.detailsWrapper}>
-      <div className={css.movieWrapper}>
-        <Button name="back" path={backLink.current}></Button>
-        <img
-          className={css.detailsImg}
-          src={photoUrl + `${`${movieDetails.poster_path}`}`}
-          alt={movieDetails.tags}
-        ></img>
-        <div className={css.movieDescription}>
-          <h1>
-            {movieDetails.original_title
-              ? `${movieDetails.original_title}`
-              : `${movieDetails.name}`}
-          </h1>
-          <p>User Score: {movieDetails.vote_average}%</p>
-          <h2>Overview</h2>
-          <p>{movieDetails.overview}</p>
-          <h3>Genres</h3>
-          <p>
-            {movieDetails.genres !== undefined ??
-              movieDetails.genres.map(el => el.name).join(', ')}
-          </p>
+  return (
+    movieDetails && (
+      <div className={css.detailsWrapper}>
+        <div className={css.movieWrapper}>
+          <Button name="back" path={backLink.current}></Button>
+          <img
+            className={css.detailsImg}
+            src={photoUrl + `${`${movieDetails.poster_path}`}`}
+            alt={movieDetails.tags}
+          ></img>
+          <div className={css.movieDescription}>
+            <h1>
+              {movieDetails.original_title
+                ? `${movieDetails.original_title}`
+                : `${movieDetails.name}`}
+            </h1>
+            <p>User Score: {movieDetails.vote_average}%</p>
+            <h2>Overview</h2>
+            <p>{movieDetails.overview}</p>
+            <h3>Genres</h3>
+            <p>
+              {movieDetails.genres !== undefined ??
+                movieDetails.genres.map(el => el.name).join(', ')}
+            </p>
+          </div>
         </div>
+        <div className={css.navigation}>
+          <NavLink state={{ backLink }} className={css.navlink} to="cast">
+            cast
+          </NavLink>
+          <NavLink state={{ backLink }} className={css.navlink} to="reviews">
+            reviews
+          </NavLink>
+        </div>
+        <Outlet />
       </div>
-      <div className={css.navigation}>
-        <NavLink state={{ backLink }} className={css.navlink} to="cast">
-          cast
-        </NavLink>
-        <NavLink state={{ backLink }} className={css.navlink} to="reviews">
-          reviews
-        </NavLink>
-      </div>
-      <Outlet />
-    </div>
-  ) : (
-    <div></div>
+    )
   );
 };
 
