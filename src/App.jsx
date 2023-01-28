@@ -26,11 +26,11 @@ const App = () => {
         <Route
           path="/goit-react-hw-05-movies"
           element={<TrendingList />}
-        ></Route>
+        />
         <Route path="/movies" element={<SearchMovies />} />
         <Route path="/movies/:movieId" element={<MovieDetails />}>
-          <Route path="cast" element={<MovieCast />}></Route>
-          <Route path="reviews" element={<Reviews />}></Route>
+          <Route path="cast" element={<MovieCast />}/>
+          <Route path="reviews" element={<Reviews />}/>
         </Route>
 
         <Route
