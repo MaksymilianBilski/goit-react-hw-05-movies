@@ -65,8 +65,6 @@ SearchMovies.propTypes = {
       name: PropTypes.string,
     })
   ),
-  inputValue: PropTypes.string,
-  fetchQueryData: PropTypes.func,
   onSubmit: PropTypes.func,
 };
 

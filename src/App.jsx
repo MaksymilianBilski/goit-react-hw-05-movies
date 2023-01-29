@@ -1,11 +1,6 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 import Button from './components/Button/Button';
-// import MovieDetails from 'pages/MovieDetails/MovieDetails';
-// import TrendingList from 'pages/Home/Home';
-// import MovieCast from 'pages/MovieCast/MovieCast';
-// import Reviews from 'pages/Reviews/Reviews';
-// import SearchMovies from 'pages/SearchMovies/Movies';
 
 const MovieDetails = lazy(() => import('pages/MovieDetails/MovieDetails'));
 const TrendingList = lazy(() => import('pages/Home/Home'));
@@ -29,9 +24,7 @@ const App = () => {
         <Button path="/goit-react-hw-05-movies" name="home" />
         <Button path="/movies" name="movies" />
       </div>
-      <Suspense
-        fallback={<div style={{ height: '200', fontSize: 50 }}>loading...</div>}
-      >
+      <Suspense fallback={<div>loading...</div>}>
         <Routes>
           <Route path="/goit-react-hw-05-movies" element={<TrendingList />} />
           <Route path="/movies" element={<SearchMovies />} />
@@ -39,7 +32,6 @@ const App = () => {
             <Route path="cast" element={<MovieCast />} />
             <Route path="reviews" element={<Reviews />} />
           </Route>
-
           <Route
             path="*"
             element={<Navigate to="/goit-react-hw-05-movies" />}
